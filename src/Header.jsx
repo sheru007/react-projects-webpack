@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 
 function Header() {
     return (
-      <ul>
+      <ul className='header' style={{direction: 'flex'}}>
           <li>
               <Link to='/'>Home</Link>
           </li>
@@ -11,6 +11,9 @@ function Header() {
           </li>
           <li>
               <Link to='/profile'>Profile</Link>
+          </li>
+          <li>
+              <Link to='/testing'>Testing</Link>
           </li>
       </ul>
     )

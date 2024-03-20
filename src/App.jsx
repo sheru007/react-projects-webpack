@@ -3,6 +3,8 @@ import Header from './Header';
 import Profile from './Profile';
 import About from './About';
 import Home from './Home';
+import Testing from './Testing';
+import Counter from './Counter';
 
 function App() {
   console.log(process.env.REACT_APP_API_KEY)
@@ -14,7 +16,9 @@ function App() {
         <Header />
         <div className='container'>
         <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<Counter />} />
+            <Route path='/testing' element={<Testing />} />
+            <Route path='/home' element={<Home />} />
             <Route path='/about' element={<About />} />
             <Route path='/profile' element={<Profile />} />
         </Routes>
