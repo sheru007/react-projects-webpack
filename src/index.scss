@@ -26,3 +26,17 @@ ul {
     margin-right: 20px;
     cursor: pointer;
 }
+
+.step-bar-container {
+    border: 1px solid;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.step-circle {
+    border: 1px solid;
+    border-radius: 100%;
+    padding: 5px;
+}
