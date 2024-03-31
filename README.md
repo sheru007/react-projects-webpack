@@ -1,5 +1,4 @@
-dev link: https://webpack-demo-tutorial-dev.netlify.app/
-prod link: https://webpack-demo-prod.netlify.app/
+live url: https://react-machine-coding-projects.netlify.app/
 
 
 
