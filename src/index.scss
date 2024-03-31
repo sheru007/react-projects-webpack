@@ -1,14 +1,24 @@
+* {
+   margin: 0;
+   padding: 0; 
+}
+
 body {
+    font-family: Poppins;
     background-color: gray;
 
     h1 {
-        color: red;
+        color: rgb(30, 26, 26);
     }
 }
 
 ul {
-    direction: flex;
-    flex-direction: row;
+    list-style: none;
+
+    >li {
+        display: inline-block;
+        margin-right: 10px;
+    }
 }
 
 .timer {
@@ -39,4 +49,54 @@ ul {
     border: 1px solid;
     border-radius: 100%;
     padding: 5px;
+}
+.list-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    
+}
+.job-card {
+    width: 250px;
+    height: 100px;
+    border: 1px solid black;
+    padding: 10px;
+    min-width: 150px;
+    border-radius: 10px;
+    
+}
+
+.load-btn{
+    border: 1px solid black;
+    padding: 2px;
+    width: 100%;
+    margin-top: 10px;
+    outline: none;
+    background-color: rgb(214, 165, 72);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 3), 35px);
+    grid-template-rows: repeat(var(--rows, 3), 35px);
+    gap: 2px;
+    user-select: none;
+
+    .box {
+        width: 35px;
+        height: 35px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.selected {
+            background-color: lightblue;
+        }
+    }
 }
