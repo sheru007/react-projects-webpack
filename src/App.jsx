@@ -16,6 +16,7 @@ function App() {
         <br />
         <div className='container'>
         <Routes>
+            <Route path="/" element={<MainPage />} />
             {
               PAGES.map((page) => {
                 return <Route key={page.path} path={page.path} element={<page.component />} />
@@ -33,5 +34,8 @@ export default App
 
 
 function NotFound() {
+  return <h2>routes not matching 404 not found</h2>
+}
+function MainPage() {
   return <h2>Click on About Buttons to show the projects</h2>
 }
