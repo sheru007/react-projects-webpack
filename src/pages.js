@@ -1,4 +1,5 @@
 import CheckBox from "./component/CheckBox";
+import GreenBoard from "./component/GreenBoard";
 import MultiSelectInput from "./component/MultiSelectInput";
 import SelectableGrid from "./component/SelectableGrid";
 import ShowJobs from "./component/ShowJobs";
@@ -47,6 +48,11 @@ const PAGES = [
         name: 'Multi Select Input',
         path: '/multi-select-input',
         component: MultiSelectInput
+    },
+    {
+        name: 'Green Board',
+        path: '/green-board',
+        component: GreenBoard
     },
 ]
 
