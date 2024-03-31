@@ -1,102 +1,182 @@
 * {
-   margin: 0;
-   padding: 0; 
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: Poppins;
-    background-color: gray;
+  font-family: Poppins;
+  background-color: gray;
 
-    h1 {
-        color: rgb(30, 26, 26);
-    }
+  h1 {
+    color: rgb(30, 26, 26);
+  }
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 
-    >li {
-        display: inline-block;
-        margin-right: 10px;
-    }
+  > li {
+    display: inline-block;
+    margin-right: 10px;
+  }
 }
 
 .timer {
-    border: 1px solid black;
-    margin-top: 20px;
+  border: 1px solid black;
+  margin-top: 20px;
 }
 
 #startBtn {
-    margin-left: 20px;
-    margin-right: 20px;
-    cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
 }
 #stopBtn {
-    margin-left: 20px;
-    margin-right: 20px;
-    cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
 }
 
 .step-bar-container {
-    border: 1px solid;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-
+  border: 1px solid;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .step-circle {
-    border: 1px solid;
-    border-radius: 100%;
-    padding: 5px;
+  border: 1px solid;
+  border-radius: 100%;
+  padding: 5px;
 }
 .list-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    row-gap: 10px;
-    
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
 }
 .job-card {
-    width: 250px;
-    height: 100px;
-    border: 1px solid black;
-    padding: 10px;
-    min-width: 150px;
-    border-radius: 10px;
-    
+  width: 250px;
+  height: 100px;
+  border: 1px solid black;
+  padding: 10px;
+  min-width: 150px;
+  border-radius: 10px;
 }
 
-.load-btn{
-    border: 1px solid black;
-    padding: 2px;
-    width: 100%;
-    margin-top: 10px;
-    outline: none;
-    background-color: rgb(214, 165, 72);
-    border-radius: 10px;
-    cursor: pointer;
+.load-btn {
+  border: 1px solid black;
+  padding: 2px;
+  width: 100%;
+  margin-top: 10px;
+  outline: none;
+  background-color: rgb(214, 165, 72);
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(var(--cols, 3), 35px);
-    grid-template-rows: repeat(var(--rows, 3), 35px);
-    gap: 2px;
-    user-select: none;
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), 35px);
+  grid-template-rows: repeat(var(--rows, 3), 35px);
+  gap: 2px;
+  user-select: none;
 
-    .box {
-        width: 35px;
-        height: 35px;
-        border: 1px solid black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  .box {
+    width: 35px;
+    height: 35px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        &.selected {
-            background-color: lightblue;
-        }
+    &.selected {
+      background-color: lightblue;
     }
+  }
+}
+
+.user-search-container {
+  display: flex;
+  position: relative;
+}
+
+.user-search-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+
+  input {
+    border: none;
+    height: 20px;
+    padding: 5px;
+    background-color: transparent;
+    
+
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+        color: black;
+    }
+  }
+}
+
+.suggestions-list {
+  max-height: 300px;
+  overflow-y: scroll;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background-color: #ccc;
+    }
+
+    img{
+        height: 20px;
+    }
+
+    &.active {
+        background-color: #ccc;
+    }
+  }
+}
+
+.user-pill {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: black;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 16px;
+  cursor: pointer;
+
+  img{
+    height: 100%;
+  }
 }
