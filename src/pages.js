@@ -1,5 +1,6 @@
 import CheckBox from "./component/CheckBox";
 import GreenBoard from "./component/GreenBoard";
+import InfiniteLevelComment from "./component/InfiniteLevelComment";
 import MultiSelectInput from "./component/MultiSelectInput";
 import SelectableGrid from "./component/SelectableGrid";
 import ShowJobs from "./component/ShowJobs";
@@ -53,6 +54,11 @@ const PAGES = [
         name: 'Green Board',
         path: '/green-board',
         component: GreenBoard
+    },
+    {
+        name: 'infite level comments',
+        path: '/infite-level-comments',
+        component: InfiniteLevelComment
     },
 ]
 
