@@ -1,6 +1,7 @@
 import CheckBox from "./component/CheckBox";
 import GreenBoard from "./component/GreenBoard";
 import ImageCompareSlider from "./component/ImageCompareSlider";
+import ImageZoom from "./component/ImageZoom";
 import InfiniteLevelComment from "./component/InfiniteLevelComment";
 import MultiSelectInput from "./component/MultiSelectInput";
 import SelectableGrid from "./component/SelectableGrid";
@@ -65,6 +66,11 @@ const PAGES = [
         name: 'Image Comparison Slider',
         path: '/image-comparison-slider',
         component: ImageCompareSlider
+    },
+    {
+        name: 'Image Zoom',
+        path: '/image-zoom',
+        component: ImageZoom
     },
 ]
 
