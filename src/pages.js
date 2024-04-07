@@ -1,4 +1,5 @@
 import CheckBox from "./component/CheckBox";
+import DetectOverlapCircle from "./component/DetectOverlapCircle";
 import GreenBoard from "./component/GreenBoard";
 import ImageCompareSlider from "./component/ImageCompareSlider";
 import ImageZoom from "./component/ImageZoom";
@@ -71,6 +72,11 @@ const PAGES = [
         name: 'Image Zoom',
         path: '/image-zoom',
         component: ImageZoom
+    },
+    {
+        name: 'Detect Overlap Circle',
+        path: '/detect-overlap-circle',
+        component: DetectOverlapCircle
     },
 ]
 
