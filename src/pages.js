@@ -5,6 +5,7 @@ import ImageCompareSlider from "./component/ImageCompareSlider";
 import ImageZoom from "./component/ImageZoom";
 import InfiniteLevelComment from "./component/InfiniteLevelComment";
 import MultiSelectInput from "./component/MultiSelectInput";
+import NotesDragAndDrop from "./component/NotesDrag&Drop";
 import SelectableGrid from "./component/SelectableGrid";
 import ShowJobs from "./component/ShowJobs";
 import StepBarApp from "./component/StepBarApp";
@@ -77,6 +78,11 @@ const PAGES = [
         name: 'Detect Overlap Circle',
         path: '/detect-overlap-circle',
         component: DetectOverlapCircle
+    },
+    {
+        name: 'Notes Drag and Drop',
+        path: '/notes-drag-and-drop',
+        component: NotesDragAndDrop
     },
 ]
 
