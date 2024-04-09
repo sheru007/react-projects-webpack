@@ -9344,6 +9344,171 @@ function Pill(_ref) {
 }
 ;
 /* harmony default export */ const component_MultiSelectInput = (MultiSelectInput);
+;// CONCATENATED MODULE: ./src/component/NotesDrag&Drop.js
+function NotesDrag_Drop_toConsumableArray(arr) { return NotesDrag_Drop_arrayWithoutHoles(arr) || NotesDrag_Drop_iterableToArray(arr) || NotesDrag_Drop_unsupportedIterableToArray(arr) || NotesDrag_Drop_nonIterableSpread(); }
+function NotesDrag_Drop_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function NotesDrag_Drop_iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function NotesDrag_Drop_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return NotesDrag_Drop_arrayLikeToArray(arr); }
+function NotesDrag_Drop_slicedToArray(arr, i) { return NotesDrag_Drop_arrayWithHoles(arr) || NotesDrag_Drop_iterableToArrayLimit(arr, i) || NotesDrag_Drop_unsupportedIterableToArray(arr, i) || NotesDrag_Drop_nonIterableRest(); }
+function NotesDrag_Drop_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function NotesDrag_Drop_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return NotesDrag_Drop_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return NotesDrag_Drop_arrayLikeToArray(o, minLen); }
+function NotesDrag_Drop_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function NotesDrag_Drop_iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function NotesDrag_Drop_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function getNotes() {
+  var arr = localStorage.getItem('notes');
+  return arr ? JSON.parse(arr) : [];
+}
+function NotesDragAndDrop() {
+  var _useState = (0,react.useState)(''),
+    _useState2 = NotesDrag_Drop_slicedToArray(_useState, 2),
+    text = _useState2[0],
+    setText = _useState2[1];
+  var _useState3 = (0,react.useState)(getNotes()),
+    _useState4 = NotesDrag_Drop_slicedToArray(_useState3, 2),
+    notes = _useState4[0],
+    setNotes = _useState4[1];
+  var divRef = (0,react.useRef)();
+  var notesRef = (0,react.useRef)([]);
+  var handleAddNotes = function handleAddNotes() {
+    if (!text) return;
+    if (notes.map(function (n) {
+      return n.text;
+    }).includes(text)) return;
+    var parent = divRef.current.getBoundingClientRect();
+    var current = {
+      text: text,
+      id: "".concat(text.trim(), "#").concat(notes.length),
+      top: parent.top + Math.floor(Math.random() * 200),
+      left: parent.left + Math.floor(Math.random() * 200)
+    };
+    var newArr = [].concat(NotesDrag_Drop_toConsumableArray(notes), [current]);
+    localStorage.setItem('notes', JSON.stringify(newArr));
+    setNotes(newArr);
+  };
+  var handleDeleteNotes = function handleDeleteNotes() {
+    localStorage.clear();
+    setNotes([]);
+  };
+  var handleDragStart = function handleDragStart(e, note) {
+    var id = note.id;
+    var currNoteRef = notesRef.current[id].current;
+    var cnrp = currNoteRef.getBoundingClientRect();
+    console.log({
+      top: cnrp.top,
+      left: cnrp.left
+    });
+    var offsetX = e.clientX - cnrp.left;
+    var offsetY = e.clientY - cnrp.top;
+    var startPos = note;
+    var handleMouseMove = function handleMouseMove(event) {
+      var newX = event.clientX - offsetX;
+      var newY = event.clientY - offsetY;
+      currNoteRef.style.left = "".concat(newX, "px");
+      currNoteRef.style.top = "".concat(newY, "px");
+    };
+    var handleMouseUP = function handleMouseUP(ev) {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUP);
+      var finalRef = currNoteRef.getBoundingClientRect();
+      var newPos = {
+        top: finalRef.top,
+        left: finalRef.left
+      };
+      if (checkOverlap(id)) {
+        // check for overlap
+        currNoteRef.style.left = "".concat(startPos.left, "px");
+        currNoteRef.style.top = "".concat(startPos.top, "px");
+      } else {
+        // update new posiiton
+        updateNewPosition(id, newPos);
+      }
+    };
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUP);
+  };
+  function checkOverLapping(ele1, ele2) {
+    var overlap = !(ele1.top > ele2.bottom || ele1.right < ele2.left || ele1.bottom < ele2.top || ele1.left > ele2.right);
+    return overlap;
+  }
+  function checkOverlap(id) {
+    var currNoteRef = notesRef.current[id].current;
+    var cnrp = currNoteRef.getBoundingClientRect();
+    return notes.some(function (note) {
+      if (note.id === id) return false;
+      var otherRef = notesRef.current[note.id].current;
+      var otherRefPos = otherRef.getBoundingClientRect();
+      return checkOverLapping(cnrp, otherRefPos);
+    });
+  }
+  function updateNewPosition(id, pos) {
+    var newArr = notes.map(function (n) {
+      if (n.id == id) {
+        n.top = pos.top;
+        n.left = pos.left;
+      }
+      return n;
+    });
+    localStorage.setItem('notes', JSON.stringify(newArr));
+    setNotes(newArr);
+  }
+  return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'center',
+      padding: '10px'
+    }
+  }, /*#__PURE__*/react.createElement("input", {
+    type: "text",
+    value: text,
+    onChange: function onChange(e) {
+      return setText(e.target.value);
+    }
+  }), /*#__PURE__*/react.createElement("button", {
+    style: {
+      marginLeft: '20px'
+    },
+    onClick: handleAddNotes
+  }, "Add Notes"), /*#__PURE__*/react.createElement("button", {
+    style: {
+      marginLeft: '20px'
+    },
+    onClick: handleDeleteNotes
+  }, "delete notes")), /*#__PURE__*/react.createElement("div", {
+    ref: divRef,
+    style: {
+      border: '1px solid'
+    }
+  }, notes.map(function (n) {
+    return /*#__PURE__*/react.createElement("div", {
+      key: n.id,
+      ref: notesRef.current[n.id] ? notesRef.current[n.id] : notesRef.current[n.id] = /*#__PURE__*/(0,react.createRef)(),
+      onMouseDown: function onMouseDown(e) {
+        return handleDragStart(e, n);
+      },
+      style: {
+        width: '200px',
+        position: 'absolute',
+        top: "".concat(n.top, "px"),
+        left: "".concat(n.left, "px"),
+        backgroundColor: 'lightyellow',
+        display: 'flex',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        padding: '5px',
+        margin: '10px',
+        cursor: 'move',
+        userSelect: 'none'
+      }
+    }, /*#__PURE__*/react.createElement("div", {
+      style: {
+        marginRight: '10px'
+      }
+    }, "\u261B"), /*#__PURE__*/react.createElement("div", null, n.text));
+  })));
+}
+/* harmony default export */ const NotesDrag_Drop = (NotesDragAndDrop);
 ;// CONCATENATED MODULE: ./src/component/SelectableGrid.js
 function SelectableGrid_toConsumableArray(arr) { return SelectableGrid_arrayWithoutHoles(arr) || SelectableGrid_iterableToArray(arr) || SelectableGrid_unsupportedIterableToArray(arr) || SelectableGrid_nonIterableSpread(); }
 function SelectableGrid_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -15084,6 +15249,7 @@ function Testing() {
 
 
 
+
 var PAGES = [{
   name: 'Home',
   path: '/home',
@@ -15136,6 +15302,10 @@ var PAGES = [{
   name: 'Detect Overlap Circle',
   path: '/detect-overlap-circle',
   component: component_DetectOverlapCircle
+}, {
+  name: 'Notes Drag and Drop',
+  path: '/notes-drag-and-drop',
+  component: NotesDrag_Drop
 }];
 /* harmony default export */ const pages = (PAGES);
 ;// CONCATENATED MODULE: ./src/Header.jsx
