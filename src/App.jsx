@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {HashRouter, Route, Routes} from 'react-router-dom';
 import Header from './Header';
 import PAGES from './pages';
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
         <h1 style={{textAlign: 'center'}}>React machine coding projects</h1>
-        <BrowserRouter>
+        <HashRouter>
         <Header />
         <br />
         <hr />
@@ -25,7 +25,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
         </Routes>
         </div>
-        </BrowserRouter>
+        </HashRouter>
     </div>
   )
 }
