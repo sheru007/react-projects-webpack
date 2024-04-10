@@ -7793,26 +7793,26 @@ function BrowserRouter(_ref4) {
     future,
     window
   } = _ref4;
-  let historyRef = react.useRef();
+  let historyRef = React.useRef();
   if (historyRef.current == null) {
-    historyRef.current = router_createBrowserHistory({
+    historyRef.current = createBrowserHistory({
       window,
       v5Compat: true
     });
   }
   let history = historyRef.current;
-  let [state, setStateImpl] = react.useState({
+  let [state, setStateImpl] = React.useState({
     action: history.action,
     location: history.location
   });
   let {
     v7_startTransition
   } = future || {};
-  let setState = react.useCallback(newState => {
+  let setState = React.useCallback(newState => {
     v7_startTransition && dist_startTransitionImpl ? dist_startTransitionImpl(() => setStateImpl(newState)) : setStateImpl(newState);
   }, [setStateImpl, v7_startTransition]);
-  react.useLayoutEffect(() => history.listen(setState), [history, setState]);
-  return /*#__PURE__*/react.createElement(dist_Router, {
+  React.useLayoutEffect(() => history.listen(setState), [history, setState]);
+  return /*#__PURE__*/React.createElement(Router, {
     basename: basename,
     children: children,
     location: state.location,
@@ -7832,26 +7832,26 @@ function HashRouter(_ref5) {
     future,
     window
   } = _ref5;
-  let historyRef = React.useRef();
+  let historyRef = react.useRef();
   if (historyRef.current == null) {
-    historyRef.current = createHashHistory({
+    historyRef.current = router_createHashHistory({
       window,
       v5Compat: true
     });
   }
   let history = historyRef.current;
-  let [state, setStateImpl] = React.useState({
+  let [state, setStateImpl] = react.useState({
     action: history.action,
     location: history.location
   });
   let {
     v7_startTransition
   } = future || {};
-  let setState = React.useCallback(newState => {
+  let setState = react.useCallback(newState => {
     v7_startTransition && dist_startTransitionImpl ? dist_startTransitionImpl(() => setStateImpl(newState)) : setStateImpl(newState);
   }, [setStateImpl, v7_startTransition]);
-  React.useLayoutEffect(() => history.listen(setState), [history, setState]);
-  return /*#__PURE__*/React.createElement(Router, {
+  react.useLayoutEffect(() => history.listen(setState), [history, setState]);
+  return /*#__PURE__*/react.createElement(dist_Router, {
     basename: basename,
     children: children,
     location: state.location,
@@ -15339,7 +15339,7 @@ function App() {
     style: {
       textAlign: 'center'
     }
-  }, "React machine coding projects"), /*#__PURE__*/App_React.createElement(BrowserRouter, null, /*#__PURE__*/App_React.createElement(src_Header, null), /*#__PURE__*/App_React.createElement("br", null), /*#__PURE__*/App_React.createElement("hr", null), /*#__PURE__*/App_React.createElement("br", null), /*#__PURE__*/App_React.createElement("div", {
+  }, "React machine coding projects"), /*#__PURE__*/App_React.createElement(HashRouter, null, /*#__PURE__*/App_React.createElement(src_Header, null), /*#__PURE__*/App_React.createElement("br", null), /*#__PURE__*/App_React.createElement("hr", null), /*#__PURE__*/App_React.createElement("br", null), /*#__PURE__*/App_React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/App_React.createElement(Routes, null, /*#__PURE__*/App_React.createElement(Route, {
     path: "/",
