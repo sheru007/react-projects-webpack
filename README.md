@@ -1,5 +1,7 @@
-live url: https://react-machine-coding-projects.netlify.app/
+live url:https://sheru007.github.io/react-projects-webpack/
 
+
+<img width="1458" alt="image" src="https://github.com/sheru007/react-projects-webpack/assets/77526923/5e2f183a-fdce-4d6a-b962-d6cae36761f9">
 
 
 1. if we try to import one js file into another file, then it will give error
