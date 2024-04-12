@@ -6,20 +6,37 @@
 body {
   font-family: Poppins;
   background-color: gray;
-
-  h1 {
-    color: rgb(30, 26, 26);
-  }
 }
-
-ul {
+.container {
+  margin: 10px;
+  padding: 5px;
+}
+.card-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
   list-style: none;
+  // border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.7);
+  margin: 10px auto;
 
-  > li {
+  >li {
+    border: 1px solid lightcoral;
+    min-width: fit-content;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+
     display: inline-block;
     margin-right: 10px;
   }
 }
+
+
 
 .timer {
   border: 1px solid black;

@@ -9,30 +9,36 @@ import NotesDragAndDrop from "./component/NotesDrag&Drop";
 import SelectableGrid from "./component/SelectableGrid";
 import ShowJobs from "./component/ShowJobs";
 import StepBarApp from "./component/StepBarApp";
+import TypeEffect from "./component/TypeEffect";
 import Counter from "./Counter";
 import Home from "./Home";
 import Testing from "./Testing";
 
 const PAGES = [
     {
-        name: 'Home',
-        path: '/home',
-        component: Home
+        name: 'Type Effect',
+        path: '/type-effect',
+        component: TypeEffect
     },
     {
-        name: 'Testing',
-        path: '/testing',
-        component: Testing
+        name: 'infite level comments',
+        path: '/infite-level-comments',
+        component: InfiniteLevelComment
+    },
+    {
+        name: 'Detect Overlap Circle',
+        path: '/detect-overlap-circle',
+        component: DetectOverlapCircle
+    },
+    {
+        name: 'Notes Drag and Drop',
+        path: '/notes-drag-and-drop',
+        component: NotesDragAndDrop
     },
     {
         name: 'Counter',
         path: '/counter',
         component: Counter
-    },
-    {
-        name: 'Step Bar',
-        path: '/step-bar',
-        component: StepBarApp
     },
     {
         name: 'Show Jobs List',
@@ -60,11 +66,6 @@ const PAGES = [
         component: GreenBoard
     },
     {
-        name: 'infite level comments',
-        path: '/infite-level-comments',
-        component: InfiniteLevelComment
-    },
-    {
         name: 'Image Comparison Slider',
         path: '/image-comparison-slider',
         component: ImageCompareSlider
@@ -75,14 +76,19 @@ const PAGES = [
         component: ImageZoom
     },
     {
-        name: 'Detect Overlap Circle',
-        path: '/detect-overlap-circle',
-        component: DetectOverlapCircle
+        name: 'Step Bar',
+        path: '/step-bar',
+        component: StepBarApp
     },
     {
-        name: 'Notes Drag and Drop',
-        path: '/notes-drag-and-drop',
-        component: NotesDragAndDrop
+        name: 'Home',
+        path: '/home',
+        component: Home
+    },
+    {
+        name: 'Testing',
+        path: '/testing',
+        component: Testing
     },
 ]
 

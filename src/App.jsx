@@ -1,5 +1,5 @@
 import {HashRouter, Route, Routes} from 'react-router-dom';
-import Header from './Header';
+import HomePage from './HomePage';
 import PAGES from './pages';
 
 
@@ -8,15 +8,10 @@ function App() {
   // console.log(process.env.REACT_APP_AUTH_KEY)
   return (
     <div>
-        <h1 style={{textAlign: 'center'}}>React machine coding projects</h1>
         <HashRouter>
-        <Header />
-        <br />
-        <hr />
-        <br />
         <div className='container'>
         <Routes>
-            <Route path="/" element={<MainPage />} />
+            <Route path="/" element={<HomePage />} />
             {
               PAGES.map((page) => {
                 return <Route key={page.path} path={page.path} element={<page.component />} />
@@ -35,7 +30,4 @@ export default App
 
 function NotFound() {
   return <h2>routes not matching 404 not found</h2>
-}
-function MainPage() {
-  return <h2>Click on About Buttons to show the projects</h2>
 }
